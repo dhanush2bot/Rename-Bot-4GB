@@ -65,15 +65,15 @@ async def send_doc(client, message):
                                                                                                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🔺  Rᴇsᴛʀɪᴄᴛ Usᴇʀ ( **PM** )  🔺", callback_data="ceasepower")]]))
             return
 		
-    botdata(int(botid))
     bot_data = find_one(int(botid))
     prrename = bot_data['total_rename']
     prsize = bot_data['total_size']
     user_deta = find_one(user_id)
-    used_date = user_deta["date"]
-    buy_date = user_deta["prexdate"]
-    daily = user_deta["daily"]
-    user_type = user_deta["usertype"]
+    used_date = user_deta.get("date", None)  # Use get() method to safely get the value
+    buy_date = user_deta.get("prexdate", None)
+    daily = user_deta.get("daily", None)
+    user_type = user_deta.get("usertype", None)
+
 
     c_time = time.time()
 
